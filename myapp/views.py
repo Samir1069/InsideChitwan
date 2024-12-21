@@ -4,7 +4,7 @@ from .models import member
 from django.contrib.auth import logout
 def home(request):
    
-    template= loader.get_template("home.html")
+    template= loader.get_template("index.html")
     
     return HttpResponse(template.render())
 def login(request):
