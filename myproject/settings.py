@@ -47,7 +47,7 @@ SOCIALACCOUNT_PROVIDERS={
     "google": {
         "SCOPE":[
             "profile",
-            "email"
+            "email",
         ],
         "AUTH_PARAMS" : {"access_type":"online"}
     }
@@ -142,11 +142,13 @@ AUTHENTICATION_BACKENDS=(
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend"
 )
-LOGIN_DIRECT_URL="/dashboard/"
-LOGOUT_REDRECT_URL="/dashboard/"
-SOCIALACCOUNT_LOGIN_ON_GET = True
-ACCOUNT_SIGNUP_REDIRECT_URL = '/dashboard/'
-SOCIALACCOUNT_AUTO_SIGNUP = True
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+LOGIN_REDIRECT_URL = '/dashboard'
+LOGOUT_REDIRECT_URL = '/'
 
 
+SSOCIALACCOUNT_PIPELINE = (
+    'socialaccount.pipeline.social_auth.social_login',
+    'socialaccount.pipeline.social_auth.social_token',
+    'socialaccount.pipeline.social_auth.social_account',
+    'socialaccount.pipeline.profile.get_user_profile_picture',  # Add your custom step here
+)
