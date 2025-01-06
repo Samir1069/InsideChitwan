@@ -26,4 +26,23 @@ def dashboard(request):
         return render(request,"Dashboard.html")
     return redirect('/signup')
 
-    
+def map(request):
+    if request.user.is_authenticated:
+        return render(request,"map.html")
+    return redirect('/signup')
+def festival(request):
+    if request.user.is_authenticated:
+        return render(request,"festivals.html")
+    return redirect('/signup')
+def event(request):
+    if request.user.is_authenticated:
+        return render(request,"events.html")
+    return redirect('/signup')
+def chat(request):
+    if request.user.is_authenticated:
+        return render(request,"chat.html")
+    return redirect('/signup')
+def profile(request):
+    if request.user.is_authenticated:
+        return render(request,"profile.html")
+    return redirect('/signup')
